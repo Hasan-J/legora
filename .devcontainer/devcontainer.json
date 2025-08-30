@@ -10,6 +10,5 @@
 		"ghcr.io/nils-geistmann/devcontainers-features/zsh:0": {},
 		"ghcr.io/devcontainers-extra/features/zsh-plugins:0": {},
 		"ghcr.io/jsburckhardt/devcontainer-features/uv:1": {}
-	},
-	"postCreateCommand": "pip3 install --user -r requirements.txt"
+	}
 }
