@@ -9,17 +9,17 @@ This project includes downloading documents into object storage, extracting esse
 
 ### 📥 `extract_decisions` (Dagster Asset)  
 - 🕷 **Uses Scrapy** to fetch documents and metadata from Workplace Relations  
-- 📦 **Stores scrape results** in **MongoDB** (`workplacerelations.raw_decisions`) using Scrapy pipelines  
+- 📦 **Stores scrape results** in **MongoDB** (`workplacerelations.decisions_raw`) using Scrapy pipelines  
 - 📑 **Manages file downloads** via Scrapy `FilesPipeline`  
 - 🗄 **Stores downloaded files** in **MinIO** (`s3://legora/workplacerelations/landing_zone/full/`)  
 
 ---
 
 ### 🔄 `transform_decisions` (Dagster Asset)  
-- 📤 Reads raw documents from **MongoDB** (`workplacerelations.raw_decisions`)  
+- 📤 Reads raw documents from **MongoDB** (`workplacerelations.decisions_raw`)  
 - 🧹 Applies transformations (HTML content extraction, renaming files, hashing, etc.)  
 - 📂 Stores transformed files in **MinIO** (`s3://legora/workplacerelations/processed/`)  
-- 🗃 Inserts metadata into a **new MongoDB collection** (`workplacerelations.transformed_decisions`)  
+- 🗃 Inserts metadata into a **new MongoDB collection** (`workplacerelations.decisions_transformed`)  
 
 ---
 
