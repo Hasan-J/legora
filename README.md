@@ -36,11 +36,16 @@ Dagster passes the partition key (`from_date`, `to_date`) to Scrapy for time-bas
 **Clone the repo:**
 ```bash
 git clone https://github.com/Hasan-J/legora.git
+cd legora
 ```
 
 **Copy .env.example to .env**
 
 `.env.example` contains values that will work out-of-the-box.
+
+```bash
+cp .env.example .env
+```
 
 Now you can either follow the quick setup or manual setup below:
 
@@ -85,6 +90,8 @@ scrapy crawl decisions -a from_date=1/8/2025 -a to_date=31/8/2025 -a body=2,1,3,
 
 Runs the decisions Scrapy spider to crawl decisions published between 1/8/2025 and 31/8/2025, filtering results to the specified tribunals (body codes 2, 1, 3, 15376). Omitting the body argument would crawl all tribunals by default.
 
+<sub>💡 Refer to decisions spider for code references and more info at `src/legora_scrapy/workplacerelations/spiders/decisions.py`</sub>
+
 **Run dagster locally**
 
 ```bash
@@ -95,4 +102,12 @@ Then you only need to run minio and mongodb using docker compose.
 
 ```bash
 docker compose up -d mongodb minio
+```
+
+### Cleanup
+
+Delete all containers, networks and volumes.
+
+```bash
+docker compose down -v
 ```
