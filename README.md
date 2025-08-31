@@ -42,11 +42,28 @@ git clone https://github.com/Hasan-J/legora.git
 
 `.env.example` contains values that will work out-of-the-box.
 
-### Install dependencies
+Now you can either follow the quick setup or manual setup below:
+
+### Run processes and services using docker compose (Quick Setup)
+
+```bash
+docker compose up -d
+```
+
+This will start the required services:
+- **MongoDB** → [http://localhost:27017](http://localhost:27017) (default creds: dev / password)
+- **MinIO Console** → [http://localhost:9001](http://localhost:9001) (default creds: dev / password)
+- **MinIO S3 API** → [http://localhost:9000](http://localhost:9000)
+- **Dagster UI** → [http://localhost:3000](http://localhost:3000)
+
+
+➡️ Open Dagster UI → Materialize Assets as needed
+
+### Run processes and services manually (Manual Setup)
 
 This is only needed if you want to develop or you want to manually start dagster or scrapy crawls.
 
-**Using [uv](https://docs.astral.sh/uv/)**
+**Install dependencies using [uv](https://docs.astral.sh/uv/)**
 
 You can quickly install it using their [official documentation](https://docs.astral.sh/uv/getting-started/installation/)
 
@@ -56,8 +73,6 @@ source .venv/bin/activate   # Linux
 .venv\Scripts\activate      # Windows
 ```
 <sub>💡 Alternatively, you can use `python -m venv` + `pip install -e ".[dev]"` if you prefer pip.</sub>
-
-### Run processes and services manually
 
 **Scrapy crawl**
 
@@ -81,18 +96,3 @@ Then you only need to run minio and mongodb using docker compose.
 ```bash
 docker compose up -d mongodb minio
 ```
-
-### Run processes and services using docker compose
-
-```bash
-docker compose up -d
-```
-
-This will start the required services:
-- **MongoDB** → [http://localhost:27017](http://localhost:27017) (default creds: dev / password)
-- **MinIO Console** → [http://localhost:9001](http://localhost:9001) (default creds: dev / password)
-- **MinIO S3 API** → [http://localhost:9000](http://localhost:9000)
-- **Dagster UI** → [http://localhost:3000](http://localhost:3000)
-
-
-➡️ Open Dagster UI → Materialize Assets as needed
